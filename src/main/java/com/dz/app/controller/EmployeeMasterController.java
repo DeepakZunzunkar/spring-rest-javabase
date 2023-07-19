@@ -32,6 +32,12 @@ public class EmployeeMasterController {
 		return employeeService.getEmployeeByEid(eid);
 	}
 	
+	@GetMapping(value="{pagenumber}/{pagesize}")
+	public List<Employee> getAllEmployeeByEid(@PathVariable("pagenumber") Integer pageNumber,
+			@PathVariable("pagesize") Integer pageSize){
+		return employeeService.getEmployeesByPage(pageNumber, pageSize);
+	}
+	
 	@PostMapping
 	public Employee addEmployee(@RequestBody Employee employee) {
 		return employeeService.addEmployee(employee);
